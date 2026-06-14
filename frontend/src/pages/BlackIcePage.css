@@ -1,0 +1,126 @@
+.current-weather-section {
+  background: #fff;
+  border: 1px solid #e0e4eb;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 8px;
+}
+
+.current-weather-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.section-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #263238;
+}
+
+.refresh-btn {
+  padding: 4px 10px;
+  font-size: 12px;
+  border: 1px solid #b0bec5;
+  border-radius: 6px;
+  background: #fff;
+  color: #546e7a;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.refresh-btn:hover:not(:disabled) {
+  background: #eceff1;
+}
+
+.refresh-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.last-updated {
+  margin-left: auto;
+  font-size: 11px;
+  color: #90a4ae;
+}
+
+.weather-empty-msg {
+  font-size: 13px;
+  color: #90a4ae;
+  text-align: center;
+  padding: 16px 0;
+}
+
+.station-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+  gap: 10px;
+}
+
+.station-card {
+  border-radius: 8px;
+  border: 1px solid #e0e4eb;
+  border-top-width: 4px;
+  padding: 12px;
+  transition: box-shadow 0.15s;
+}
+
+.station-card:hover {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+.station-card-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: #263238;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.risk-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #fff;
+  padding: 2px 7px;
+  border-radius: 10px;
+}
+
+.station-metrics {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.metric {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.metric-icon {
+  font-size: 13px;
+  width: 18px;
+  text-align: center;
+}
+
+.metric-label {
+  font-size: 12px;
+  color: #78909c;
+  flex: 1;
+}
+
+.metric-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: #263238;
+}
+
+.station-card-time {
+  margin-top: 8px;
+  font-size: 10px;
+  color: #b0bec5;
+  text-align: right;
+}

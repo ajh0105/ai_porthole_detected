@@ -1,0 +1,83 @@
+services:
+  db:
+    image: postgis/postgis:15-3.4
+    container_name: roadgis-db
+    environment:
+      POSTGRES_DB: roadgis
+      POSTGRES_USER: roadgis
+      POSTGRES_PASSWORD: roadgis1234
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init-db.sql:/docker-entrypoint-initdb.d/init-db.sql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U roadgis -d roadgis"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  ai:
+    build:
+      context: ../ai
+      dockerfile: ../docker/Dockerfile.ai
+    container_name: roadgis-ai
+    environment:
+      DB_HOST: db
+      DB_PORT: 5432
+      DB_NAME: roadgis
+      DB_USER: roadgis
+      DB_PASSWORD: roadgis1234
+      WEATHER_API_KEY: ${WEATHER_API_KEY:-}
+    ports:
+      - "8000:8000"
+    volumes:
+      - ../ai/models:/app/models
+      - ../ai/data:/app/data
+      - upload_data:/app/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
+
+  backend:
+    build:
+      context: ../backend
+      dockerfile: ../docker/Dockerfile.backend
+    container_name: roadgis-backend
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/roadgis
+      SPRING_DATASOURCE_USERNAME: roadgis
+      SPRING_DATASOURCE_PASSWORD: roadgis1234
+      JWT_SECRET: roadgis-jwt-secret-key-minimum-256-bits-long
+      AI_PIPELINE_URL: http://ai:8000
+      FILE_UPLOAD_DIR: /app/uploads
+    ports:
+      - "8080:8080"
+    volumes:
+      - upload_data:/app/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+      ai:
+        condition: service_started
+
+  frontend:
+    build:
+      context: ../frontend
+      dockerfile: ../docker/Dockerfile.frontend
+    container_name: roadgis-frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:
+  upload_data:

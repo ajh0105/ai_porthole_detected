@@ -1,0 +1,58 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.3.2'
+    id 'io.spring.dependency-management' version '1.1.5'
+}
+
+group = 'com.roadgis'
+version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = '21'
+    targetCompatibility = '21'
+}
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-security'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+
+    // PostGIS / Hibernate Spatial
+    implementation 'org.hibernate.orm:hibernate-spatial:6.4.4.Final'
+    implementation 'org.postgresql:postgresql'
+    implementation 'net.postgis:postgis-jdbc:2021.1.0'
+
+    // JWT
+    implementation 'io.jsonwebtoken:jjwt-api:0.12.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-impl:0.12.5'
+    runtimeOnly 'io.jsonwebtoken:jjwt-jackson:0.12.5'
+
+    // 보고서 생성
+    implementation 'org.apache.poi:poi-ooxml:5.2.5'
+    implementation 'com.itextpdf:itext7-core:7.2.5'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    // 파일 업로드
+    implementation 'commons-io:commons-io:2.15.1'
+
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testImplementation 'org.springframework.security:spring-security-test'
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}

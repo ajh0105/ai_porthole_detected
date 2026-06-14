@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: #f4f6f9;
+  color: #1a1a2e;
+}
+
+:root {
+  --primary: #1565c0;
+  --primary-dark: #0d47a1;
+  --danger: #c62828;
+  --warning: #e65100;
+  --success: #2e7d32;
+  --info: #01579b;
+  --sidebar-width: 240px;
+  --header-height: 60px;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  cursor: pointer;
+}

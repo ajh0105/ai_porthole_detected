@@ -1,0 +1,28 @@
+# AI / 딥러닝 (torch/torchvision은 pytorch base image에 포함)
+ultralytics==8.4.52
+
+# 머신러닝
+scikit-learn==1.4.2
+xgboost==2.0.3
+lightgbm==4.3.0
+joblib==1.4.0
+
+# 데이터 처리
+numpy==1.26.4
+pandas==2.2.2
+opencv-python-headless==4.9.0.80
+Pillow==10.3.0
+
+# GIS / 공간 데이터
+psycopg2-binary==2.9.9
+
+# 기상 데이터 수집
+requests==2.31.0
+python-dotenv==1.0.1
+huggingface_hub==0.27.0
+tqdm==4.66.4
+
+# FastAPI (AI 서버)
+fastapi==0.111.0
+uvicorn==0.29.0
+python-multipart==0.0.9

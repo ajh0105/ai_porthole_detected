@@ -1,0 +1,55 @@
+.region-filter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  background: #f5f7fa;
+  border: 1px solid #e0e4eb;
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.region-filter-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #546e7a;
+  white-space: nowrap;
+}
+
+.region-select {
+  padding: 5px 10px;
+  font-size: 13px;
+  border: 1px solid #cfd8dc;
+  border-radius: 6px;
+  background: #fff;
+  color: #37474f;
+  cursor: pointer;
+  min-width: 160px;
+  transition: border-color 0.15s;
+}
+
+.region-select:focus {
+  outline: none;
+  border-color: #1565c0;
+}
+
+.region-select:disabled {
+  background: #eceff1;
+  color: #90a4ae;
+  cursor: not-allowed;
+}
+
+.region-reset-btn {
+  padding: 5px 12px;
+  font-size: 12px;
+  border: 1px solid #90a4ae;
+  border-radius: 6px;
+  background: #fff;
+  color: #546e7a;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.region-reset-btn:hover {
+  background: #eceff1;
+}

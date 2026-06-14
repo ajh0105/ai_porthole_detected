@@ -1,0 +1,93 @@
+.weather-panel {
+  border-radius: 10px;
+  border: 1px solid #e0e4eb;
+  border-left-width: 4px;
+  padding: 14px 16px;
+  margin-bottom: 16px;
+  background: #f9fafb;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.weather-panel-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.weather-icon {
+  font-size: 22px;
+}
+
+.weather-region-name {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1a237e;
+}
+
+.weather-station-name {
+  font-size: 12px;
+  color: #78909c;
+  margin-top: 2px;
+}
+
+.weather-risk-badge {
+  margin-left: auto;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.weather-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.weather-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.7);
+  border-radius: 7px;
+  padding: 7px 10px;
+}
+
+.weather-item-icon {
+  font-size: 15px;
+}
+
+.weather-item-label {
+  font-size: 12px;
+  color: #78909c;
+  flex: 1;
+}
+
+.weather-item-value {
+  font-size: 14px;
+  font-weight: 700;
+  color: #263238;
+}
+
+.weather-loading {
+  text-align: center;
+  color: #90a4ae;
+  font-size: 13px;
+  padding: 10px 0;
+}
+
+.weather-empty {
+  font-size: 12px;
+  color: #90a4ae;
+  text-align: center;
+  padding: 8px 0;
+}
+
+.weather-updated {
+  margin-top: 8px;
+  font-size: 11px;
+  color: #b0bec5;
+  text-align: right;
+}
