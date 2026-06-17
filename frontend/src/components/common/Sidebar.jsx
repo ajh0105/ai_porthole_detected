@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import { IS_DEMO } from '../../api/mockData'
 import './Sidebar.css'
 
 const MENU = [
@@ -8,12 +9,15 @@ const MENU = [
   { path: '/report',      label: '보고서',          icon: '📄' },
 ]
 
+const HF_URL = 'https://huggingface.co/spaces/ajh0105/road-damage-ai'
+
 export default function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="sidebar-logo">
         <span className="logo-icon">🗺️</span>
         <span className="logo-text">RoadGIS</span>
+        {IS_DEMO && <span className="logo-demo">DEMO</span>}
       </div>
       <nav className="sidebar-nav">
         {MENU.map((item) => (
@@ -28,6 +32,14 @@ export default function Sidebar() {
           </NavLink>
         ))}
       </nav>
+      {IS_DEMO && (
+        <div className="sidebar-hf">
+          <a href={HF_URL} target="_blank" rel="noopener noreferrer" className="hf-link">
+            🤗 AI 기능 직접 체험
+            <span className="hf-sub">Hugging Face Space</span>
+          </a>
+        </div>
+      )}
     </aside>
   )
 }

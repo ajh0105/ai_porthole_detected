@@ -1,8 +1,11 @@
 import { useState, useEffect, useRef } from 'react'
 import { roadDamageApi } from '../api/roadDamageApi'
+import { IS_DEMO } from '../api/mockData'
 import './DataPage.css'
 
 const DAMAGE_BADGE = { pothole: { label: '포트홀', color: '#c62828' }, crack: { label: '균열', color: '#e65100' } }
+
+const HF_URL = 'https://huggingface.co/spaces/ajh0105/road-damage-ai'
 
 export default function RoadDamagePage() {
   const [data, setData] = useState([])
@@ -27,6 +30,11 @@ export default function RoadDamagePage() {
   const handleUpload = async (e) => {
     const files = Array.from(e.target.files)
     if (!files.length) return
+    if (IS_DEMO) {
+      alert('데모 모드에서는 실제 AI 탐지가 지원되지 않습니다.\n\nYOLOv11 탐지 기능은 Hugging Face Space에서 직접 체험해보세요:\n' + HF_URL)
+      e.target.value = ''
+      return
+    }
     setUploading(true)
     try {
       await roadDamageApi.upload(files)
@@ -41,6 +49,10 @@ export default function RoadDamagePage() {
   }
 
   const handleDelete = async (id) => {
+    if (IS_DEMO) {
+      alert('데모 모드에서는 삭제가 지원되지 않습니다.')
+      return
+    }
     if (!confirm('삭제하시겠습니까?')) return
     await roadDamageApi.delete(id)
     fetchData()
@@ -53,6 +65,11 @@ export default function RoadDamagePage() {
       <div className="page-header">
         <h2>도로 파손 현황</h2>
         <div className="page-actions">
+          {IS_DEMO && (
+            <a className="btn-hf" href={HF_URL} target="_blank" rel="noopener noreferrer">
+              🤗 AI 탐지 체험 (Hugging Face)
+            </a>
+          )}
           <input
             ref={fileRef}
             type="file"

@@ -11,6 +11,9 @@ import ErrorBoundary from './components/common/ErrorBoundary'
 import ToastContainer from './components/common/Toast'
 import './App.css'
 
+// BASE_URL은 dev에서 '/', 프로덕션(GitHub Pages)에서 '/ai_porthole_detected/'
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
+
 function PrivateLayout({ children }) {
   const token = useAuthStore((s) => s.token)
   if (!token) return <Navigate to="/login" replace />
@@ -29,7 +32,7 @@ function PrivateLayout({ children }) {
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/"             element={<PrivateLayout><DashboardPage /></PrivateLayout>} />

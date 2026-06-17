@@ -52,3 +52,42 @@
 }
 
 .nav-icon { font-size: 18px; }
+
+.logo-demo {
+  font-size: 10px;
+  font-weight: 700;
+  background: #ffd54f;
+  color: #5d4037;
+  padding: 2px 6px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  margin-left: auto;
+}
+
+.sidebar-hf {
+  padding: 12px 8px;
+  border-top: 1px solid rgba(255,255,255,0.15);
+}
+
+.hf-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.1);
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+  text-align: center;
+  transition: background 0.2s;
+  gap: 2px;
+}
+
+.hf-link:hover { background: rgba(255,255,255,0.2); }
+
+.hf-sub {
+  font-size: 10px;
+  font-weight: 400;
+  opacity: 0.8;
+}

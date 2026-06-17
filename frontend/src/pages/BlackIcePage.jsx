@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
 import { blackIceApi } from '../api/blackIceApi'
+import { IS_DEMO } from '../api/mockData'
 import './DataPage.css'
 import './BlackIcePage.css'
 
@@ -10,8 +11,9 @@ const RISK_STYLE = [
   { label: '위험', color: '#c62828', bg: '#ffebee' },
 ]
 
-// 관측소 ID → 도시명 매핑
 const STATION_NAME = { '108': '서울', '119': '수원', '133': '대전', '143': '대구', '156': '광주', '159': '부산' }
+
+const HF_URL = 'https://huggingface.co/spaces/ajh0105/road-damage-ai'
 
 export default function BlackIcePage() {
   const [data, setData] = useState([])
@@ -21,7 +23,6 @@ export default function BlackIcePage() {
   const [predicting, setPredicting] = useState(false)
   const [loading, setLoading] = useState(false)
 
-  // 관측소별 현재 기상 현황
   const [currentWeather, setCurrentWeather] = useState([])
   const [weatherLoading, setWeatherLoading] = useState(false)
   const [lastUpdated, setLastUpdated] = useState(null)
@@ -50,6 +51,10 @@ export default function BlackIcePage() {
   useEffect(() => { fetchList() }, [fetchList])
 
   const handlePredict = async () => {
+    if (IS_DEMO) {
+      alert('데모 모드에서는 실시간 기상 API 연동이 지원되지 않습니다.\n\nXGBoost + LightGBM 앙상블 예측 기능은 Hugging Face Space에서 체험해보세요:\n' + HF_URL)
+      return
+    }
     setPredicting(true)
     try {
       await blackIceApi.predict()
@@ -69,12 +74,18 @@ export default function BlackIcePage() {
     <div className="data-page">
       <div className="page-header">
         <h2>블랙아이스 위험 예측</h2>
-        <button className="btn-primary" onClick={handlePredict} disabled={predicting}>
-          {predicting ? '예측 중...' : '최신 기상 데이터로 예측 실행'}
-        </button>
+        <div className="page-actions">
+          {IS_DEMO && (
+            <a className="btn-hf" href={HF_URL} target="_blank" rel="noopener noreferrer">
+              🤗 AI 예측 체험 (Hugging Face)
+            </a>
+          )}
+          <button className="btn-primary" onClick={handlePredict} disabled={predicting}>
+            {predicting ? '예측 중...' : '최신 기상 데이터로 예측 실행'}
+          </button>
+        </div>
       </div>
 
-      {/* 관측소별 실시간 기상 현황 */}
       <div className="current-weather-section">
         <div className="current-weather-header">
           <span className="section-title">관측소별 현재 기상 현황</span>
@@ -129,7 +140,6 @@ export default function BlackIcePage() {
         )}
       </div>
 
-      {/* 예측 이력 목록 */}
       <div className="filter-bar" style={{ marginTop: 16 }}>
         <select value={riskLevel} onChange={(e) => { setRiskLevel(e.target.value); setPage(0) }}>
           <option value="">전체 위험도</option>

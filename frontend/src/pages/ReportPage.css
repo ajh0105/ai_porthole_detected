@@ -32,3 +32,17 @@
   transition: background 0.2s;
 }
 .btn-download:hover { background: var(--primary-dark); }
+
+.demo-report-notice {
+  background: #fff8e1;
+  border: 1px solid #ffe082;
+  border-radius: 10px;
+  padding: 16px 20px;
+  font-size: 13px;
+  color: #5d4037;
+  max-width: 700px;
+}
+
+.demo-report-notice strong { display: block; margin-bottom: 6px; font-size: 14px; }
+.demo-report-notice p { margin: 4px 0; line-height: 1.6; }
+.demo-report-notice a { color: #1565c0; font-weight: 600; }
