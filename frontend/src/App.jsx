@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useAuthStore } from './store/authStore'
 import LoginPage from './pages/LoginPage'
 import DashboardPage from './pages/DashboardPage'
@@ -10,9 +10,6 @@ import Header from './components/common/Header'
 import ErrorBoundary from './components/common/ErrorBoundary'
 import ToastContainer from './components/common/Toast'
 import './App.css'
-
-// BASE_URL은 dev에서 '/', 프로덕션(GitHub Pages)에서 '/ai_porthole_detected/'
-const basename = import.meta.env.BASE_URL.replace(/\/$/, '') || '/'
 
 function PrivateLayout({ children }) {
   const token = useAuthStore((s) => s.token)
@@ -32,7 +29,7 @@ function PrivateLayout({ children }) {
 
 export default function App() {
   return (
-    <BrowserRouter basename={basename}>
+    <HashRouter>
       <Routes>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/"             element={<PrivateLayout><DashboardPage /></PrivateLayout>} />
@@ -42,6 +39,6 @@ export default function App() {
         <Route path="*"             element={<Navigate to="/" replace />} />
       </Routes>
       <ToastContainer />
-    </BrowserRouter>
+    </HashRouter>
   )
 }
