@@ -16,13 +16,22 @@ export default function DamageStatsChart({ data }) {
       {chartData.length === 0 ? (
         <p style={{ color: '#aaa', fontSize: 13, textAlign: 'center', paddingTop: 40 }}>데이터 없음</p>
       ) : (
-        <ResponsiveContainer width="100%" height={160}>
+        <ResponsiveContainer width="100%" height={200}>
           <PieChart>
-            <Pie data={chartData} dataKey="value" nameKey="name" cx="50%" cy="50%" outerRadius={60} label>
+            <Pie
+              data={chartData}
+              dataKey="value"
+              nameKey="name"
+              cx="50%"
+              cy="45%"
+              outerRadius={70}
+              label={({ name, percent }) => `${(percent * 100).toFixed(0)}%`}
+              labelLine={false}
+            >
               {chartData.map((entry, i) => <Cell key={i} fill={entry.color} />)}
             </Pie>
-            <Tooltip />
-            <Legend />
+            <Tooltip formatter={(value, name) => [value.toLocaleString() + '건', name]} />
+            <Legend verticalAlign="bottom" height={36} />
           </PieChart>
         </ResponsiveContainer>
       )}
