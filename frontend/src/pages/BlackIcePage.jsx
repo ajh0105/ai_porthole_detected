@@ -13,7 +13,7 @@ const RISK_STYLE = [
 
 const STATION_NAME = { '108': '서울', '119': '수원', '133': '대전', '143': '대구', '156': '광주', '159': '부산' }
 
-const HF_URL = 'https://huggingface.co/spaces/ajh0105/road-damage-ai'
+const HF_URL = 'https://huggingface.co/spaces/simonahn/ai_porthole_detected'
 
 export default function BlackIcePage() {
   const [data, setData] = useState([])

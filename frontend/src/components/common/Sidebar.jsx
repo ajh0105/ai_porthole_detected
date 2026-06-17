@@ -9,7 +9,7 @@ const MENU = [
   { path: '/report',      label: '보고서',          icon: '📄' },
 ]
 
-const HF_URL = 'https://huggingface.co/spaces/ajh0105/road-damage-ai'
+const HF_URL = 'https://huggingface.co/spaces/simonahn/ai_porthole_detected'
 
 export default function Sidebar() {
   return (

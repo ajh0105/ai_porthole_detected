@@ -9,7 +9,7 @@
 | 링크 | 설명 |
 |------|------|
 | **[GitHub Pages 대시보드](https://ajh0105.github.io/ai_porthole_detected/)** | React 프론트엔드 시연 (샘플 데이터 기반 데모) |
-| **[Hugging Face Space](https://huggingface.co/spaces/ajh0105/road-damage-ai)** | YOLOv11 포트홀 탐지 + 블랙아이스 예측 AI 기능 직접 체험 |
+| **[Hugging Face Space](https://huggingface.co/spaces/simonahn/ai_porthole_detected)** | YOLOv11 포트홀 탐지 + 블랙아이스 예측 AI 기능 직접 체험 |
 
 > **GitHub Pages 데모 안내**
 > - 백엔드/DB 없이 **샘플 데이터**로 동작합니다 (서울 지역 도로 파손 30건, 기상관측소 6개소)
@@ -152,7 +152,7 @@ Hugging Face Space에서 실제 AI 모델을 테스트할 수 있습니다:
 - **YOLOv11 포트홀/균열 탐지**: 이미지 업로드 → 바운딩박스 + 신뢰도 결과
 - **블랙아이스 위험도 예측**: 기온/습도/강수량/풍속 입력 → 0~3단계 위험도 분류
 
-→ [Hugging Face Space 바로가기](https://huggingface.co/spaces/ajh0105/road-damage-ai)
+→ [Hugging Face Space 바로가기](https://huggingface.co/spaces/simonahn/ai_porthole_detected)
 
 ---
 

@@ -5,7 +5,7 @@ import './DataPage.css'
 
 const DAMAGE_BADGE = { pothole: { label: '포트홀', color: '#c62828' }, crack: { label: '균열', color: '#e65100' } }
 
-const HF_URL = 'https://huggingface.co/spaces/ajh0105/road-damage-ai'
+const HF_URL = 'https://huggingface.co/spaces/simonahn/ai_porthole_detected'
 
 export default function RoadDamagePage() {
   const [data, setData] = useState([])
